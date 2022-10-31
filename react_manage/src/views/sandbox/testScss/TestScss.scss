@@ -1,0 +1,35 @@
+$highlight-color:#ff0055;
+$borderColor:#ff6900;
+$header_Color:#4d4d48;
+$content_Color:rgb(123, 115, 139);
+$foot_Color:rgb(98, 255, 0);
+
+.testScssBack{
+    background-color: $highlight-color;
+    $width: 100%;
+    width: $width;
+    border: 4px solid $borderColor;
+    &_header{
+      width: 100px;  
+    }
+    // :hover{
+    //     width: 50px;
+    // }
+    &:hover{
+        background-color: aqua;
+    }
+    //UIi呀
+    /*厄尔和谈儿童*/
+}
+.testScssBack_header{
+    height: 200px;
+    background-color: $header_Color;
+}
+.testScssBack_content{
+    height: 400px;
+    background-color: $content-Color;
+}
+.testScssBack_foot{
+    height: 200px;
+    background-color: $foot_Color;
+}
