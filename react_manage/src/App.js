@@ -12,6 +12,9 @@ function App() {
     //   console.log('数据请求---');
     //   console.log(res.data);
     // })
+    // axiox.get('http://localhost:8000/posts').then((res)=>{
+    //   console.log(res);
+    // })
   },[])
   return (
       <>

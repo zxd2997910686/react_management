@@ -16,5 +16,24 @@
 <!-- 
   1.要是用scss需要先安装  执行命令  npm i --save sass 
   2.安装axios   执行命令  npm i --save axios 
+  3.抓取其他平台的数据需要配置反向代理 
+    https://create-react-app.bootcss.com/docs/proxying-api-requests-in-development 
+    在src下创建一个文件  src/setupProxy.js
+    
+    需要安装  http-proxy-middleware          npm i --save http-proxy-middleware 
+    4.安装路由
+       npm i --save-dev react-router-dom 
 
+
+     5.配置本地接口
+     安装 json-server  sudo npm install -g json-server 
+     然后创建一个json文件，在此文件所在的文件打开窗口，执行json-server --watch testjsonApi.json --port 8000
+     然后在浏览器打开http://localhost:8000/posts即可看到数据
  -->
+ <!-- 
+    //安装插件 搜索react （ES7 React/Redux/GraphQL/React-） 安装此插件
+    rfc 生成函数式组建
+    rcc 生成commponent组建
+ Origin
+  -->
+ <!-- https://i.maoyan.com/ajax/mostExpected?limit=10&offset=0&token=&optimus_uuid=D307AA30560A11EDACB5E5D6D21182C88F40FB5574DA40BA88B434F852636749&optimus_risk_level=71&optimus_code=10 -->
