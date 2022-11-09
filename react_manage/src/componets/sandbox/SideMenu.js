@@ -93,7 +93,7 @@ const iconList = {
 function SideMenu(props) {
   const [menu,setMenu] = useState([])
   useEffect(()=>{
-    axios.get('http://localhost:5000/rights?_embed=children').then(res=>{
+    axios.get('http://localhost:8000/rights?_embed=children').then(res=>{
       console.log(res.data);
       setMenu(res.data)
     })
