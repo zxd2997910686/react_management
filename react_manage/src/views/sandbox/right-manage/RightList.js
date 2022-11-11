@@ -24,7 +24,7 @@ export default function RightList() {
   const [dataSource,setdataSource] = useState([])
   useEffect(()=>{
     axios.get('http://localhost:8000/rights?_embed=children').then((res)=>{
-      console.log('角色列表');
+      console.log('权限列表');
       console.log(res.data);
       const list = res.data
       list.forEach(item => {
