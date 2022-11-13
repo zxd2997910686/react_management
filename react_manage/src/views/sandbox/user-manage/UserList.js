@@ -52,9 +52,9 @@ export default function UserList() {
     <div>
       UserList
       <Table  dataSource={dataSource} columns ={columns} 
-      pagination = {{
-        pageSize:5
-      }}
+        pagination = {{
+          pageSize:5
+        }}
       />
     </div>
   )
