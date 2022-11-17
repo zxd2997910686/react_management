@@ -75,6 +75,7 @@ export default function UserList() {
       icon:<ExclamationCircleOutlined/>,
       onOk(){
         console.log('确认按钮被点击');
+        deleteMethod(item)
       },
       onCancel(){
         console.log('取消按钮被点击');
@@ -86,6 +87,8 @@ export default function UserList() {
     console.log('删除用户');
     console.log(item);
     //当前页面同步+后端同步
+    setdataSource(dataSource.filter(date=>date.id!==item.id))
+    axios.delete(`http://localhost:8000/users/${item.id}`)
 
   }
   const addFromOk = ()=>{
@@ -98,8 +101,11 @@ export default function UserList() {
         "roleState":true,
         "default":false
       }).then(res=>{
-        console.log("添加成功"+res.data);
-        setdataSource([...dataSource,res.data])
+        console.log(`添加成功${res.data}`);
+        setdataSource([...dataSource,{
+          ...res.data,
+          role:roleList.filter(item=>item.id===value.roleId)[0]
+        }])
       })
       
     }).catch(err=>{
@@ -132,44 +138,6 @@ export default function UserList() {
        }}
       >
         <UserForm regionList = {regionList} roleList = {roleList} ref = {addForm}></UserForm>
-        {/* <Form layout='vertical'>
-          <Form.Item 
-           name = 'username'
-           label = "用户名"
-           rules={[{required:true,message:'Please input the title of collection!'}]}
-          >
-            <Input/>
-          </Form.Item>
-          <Form.Item
-              name="password"
-              label="密码"
-              rules={[{ required: true, message: 'Please input the title of collection!' }]}
-          >          
-             <Input />          
-           </Form.Item>
-           <Form.Item 
-           name="region"
-           label = "区域"
-           rules={[{ required: true, message: 'Please input the title of collection!' }]}
-           >
-            <Select>
-              {regionList.map(item=>{
-               return <Option value = {item.value} key = {item.id}>{item.title}</Option> 
-              })}
-            </Select>
-           </Form.Item>
-           <Form.Item 
-           name="roleId"
-           label = "角色"
-           rules={[{ required: true, message: 'Please input the title of collection!' }]}
-           >
-            <Select>
-              {roleList.map(item=>{
-               return <Option value = {item.value} key = {item.id}>{item.roleName}</Option> 
-              })}
-            </Select>
-           </Form.Item>
-        </Form> */}
       </Modal>
     </div>
   )

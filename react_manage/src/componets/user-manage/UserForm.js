@@ -1,9 +1,8 @@
 import React,{ forwardRef, useState } from "react";
 import {Form,Input,Select} from 'antd'
 const {Option} = Select
-
 const UserForm = forwardRef((props,ref)=>{
-    const [isDisabled,setisDisabled] = useState(false)
+const [isDisabled,setisDisabled] = useState(false)
 
     return (<Form layout='vertical' ref={ref}>
     <Form.Item 
@@ -18,7 +17,7 @@ const UserForm = forwardRef((props,ref)=>{
         label="密码"
         rules={[{ required: true, message: 'Please input the title of collection!' }]}
     >          
-       <Input />          
+       <Input.Password />          
      </Form.Item>
      <Form.Item 
         name="region"
