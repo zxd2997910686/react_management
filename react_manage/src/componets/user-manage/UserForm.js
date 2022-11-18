@@ -1,9 +1,13 @@
-import React,{ forwardRef, useState } from "react";
+import React,{ forwardRef, useEffect, useState } from "react";
 import {Form,Input,Select} from 'antd'
 const {Option} = Select
 const UserForm = forwardRef((props,ref)=>{
-const [isDisabled,setisDisabled] = useState(false)
 
+      const [isDisabled,setisDisabled] = useState(false)
+      useEffect(()=>{
+        setisDisabled(props.isUpdateDisabled)
+      },[props.isUpdateDisabled])
+   
     return (<Form layout='vertical' ref={ref}>
     <Form.Item 
         name = 'username'
@@ -17,7 +21,7 @@ const [isDisabled,setisDisabled] = useState(false)
         label="密码"
         rules={[{ required: true, message: 'Please input the title of collection!' }]}
     >          
-       <Input.Password />          
+       <Input />          
      </Form.Item>
      <Form.Item 
         name="region"

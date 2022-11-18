@@ -8,9 +8,14 @@ const {Option} = Select
 export default function UserList() {
   const [dataSource,setdataSource] = useState([])
   const [isAddVisible,setisAddVisible]  = useState(false)
+  const [isUpdateVisible, setisUpdateVisible] = useState(false)
   const [roleList,setroleList] = useState([])
   const [regionList,setregionList] = useState([])
+  const [current,setcurrent] = useState(null)
+  const [isUpdateDisabled,setisUpdateDisabled] = useState(false)
+
   const addForm = useRef(null)
+  const updateForm = useRef(null)
   useEffect(()=>{
     axios.get('http://localhost:8000/users?_expand=role').then(res=>{
       console.log(res);
@@ -56,7 +61,7 @@ export default function UserList() {
       title:'用户状态',
       dataIndex:'roleState',
       render:(roleState,item)=>{
-        return <Switch checked = {roleState} disabled = {item.default}></Switch>
+        return <Switch checked = {roleState} disabled = {item.default} onChange={()=>handleChange(item)}></Switch>
       }
     },
     {
@@ -64,11 +69,39 @@ export default function UserList() {
       render:(item)=>{ 
         return <div>
           <Button danger shape='circle' icon ={<DeleteOutlined/>} onClick = {()=>confirmMethod(item)} disabled = {item.default}/>
-          <Button type='primary' shape='circle' icon = {<EditOutlined/>} disabled = {item.default}/>
+          <Button type='primary' shape='circle' icon = {<EditOutlined/>} disabled = {item.default} onClick={()=> handleUpdate(item)}/>
         </div>
       }
     }
   ]
+  const handleUpdate=(item)=>{
+    console.log(item)
+    setisUpdateVisible(true)
+    setTimeout(() => {
+      if(item.roleId ===1){
+        //禁用
+        setisUpdateDisabled(true)
+      }else{
+        //取消禁用
+        setisUpdateDisabled(false)
+      }
+      // updateForm.current.setFieldsValue(item)
+      updateForm.current.setFieldsValue(item)
+
+    }, 0);
+    setcurrent(item)
+    //此处需要注意
+    /*Uncaught TypeError: Cannot read properties of null (reading 'setFieldsValue')*/
+    //react中状态更新不一定是同步的，导致对话框模块还没显示，也就是表单还没挂载就调用了setFieldsValue,导致表单为空
+  }
+  const handleChange=(item)=>{
+    item.roleState = !item.roleState;
+    setdataSource([...dataSource])
+    axios.patch(`http://localhost:8000/users/${item.id}`,{
+      roleState:item.roleState
+    })
+
+  }
   const confirmMethod = (item)=>{
     confirm({
       title:"确定要删除吗？",
@@ -112,6 +145,24 @@ export default function UserList() {
       console.log(err);
     })
   }
+  const updateFromOk =()=>{
+    updateForm.current.validateFields().then(value=>{
+      setisUpdateVisible(false)
+      setdataSource(dataSource.map(item=>{
+        if(item.id===current.id){
+          return{
+            ...item,
+            ...value,
+            role:roleList.filter(data=> data.id===value.roleId)[0]
+          }
+        }
+        return item
+      }))
+      setisUpdateDisabled(!isUpdateDisabled)
+      axios.patch(`http://localhost:8000/users/${current.id}`,value)
+    })
+
+  }
   return (
     <div>
       <Button type='primary' onClick={()=>{
@@ -130,14 +181,29 @@ export default function UserList() {
        onCancel={()=>{
         console.log("Modal 取消");
         setisAddVisible(false)
+        
        }}
        onOk = {()=>{
         console.log("Modal 确认");
-        // setisAddVisible(false)
         addFromOk();
        }}
       >
         <UserForm regionList = {regionList} roleList = {roleList} ref = {addForm}></UserForm>
+      </Modal>
+      <Modal
+         open ={isUpdateVisible}
+         title = "更新用户"
+         okText="更新"
+         cancelText = "取消"
+         onCancel={()=>{
+          setisUpdateVisible(false)
+          setisUpdateDisabled(!isUpdateDisabled)
+         }}
+         onOk={()=>{
+          updateFromOk()
+         }}
+      >
+        <UserForm regionList = {regionList} roleList={roleList} ref={updateForm} isUpdateDisabled={isUpdateDisabled}></UserForm>
       </Modal>
     </div>
   )
