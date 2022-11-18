@@ -42,6 +42,21 @@ export default function UserList() {
     {
       title:'区域',
       dataIndex:'region',
+      filters:[
+        ...regionList.map(item=>({
+          text:item.title,
+          value:item.value
+        })),{
+          text:"全球",
+          value:"全球"
+        }
+      ],
+      onFilter:(value,item)=>{
+        if(value ==="全球"){
+          return item.region===""
+        }
+        return item.region===value
+      },
       render:(region)=>{
         return <b>{region===""?"全球":region}</b>
       }
@@ -147,6 +162,8 @@ export default function UserList() {
   }
   const updateFromOk =()=>{
     updateForm.current.validateFields().then(value=>{
+      console.log('更新的数据');
+      console.log(value);
       setisUpdateVisible(false)
       setdataSource(dataSource.map(item=>{
         if(item.id===current.id){
@@ -170,7 +187,7 @@ export default function UserList() {
       }}> 添加用户</Button>
       <Table  dataSource={dataSource} columns ={columns} 
         pagination = {{
-          pageSize:10
+          pageSize:15
         }}
         rowKey ={item=> item.id}
       />
