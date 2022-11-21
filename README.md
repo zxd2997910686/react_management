@@ -31,6 +31,9 @@
      然后创建一个db.json文件，在此文件所在的文件打开窗口，执行 json-server --watch .\db.json  --port 8000
      然后在浏览器打开http://localhost:8000/posts即可看到数据
      _embed = comments 关联表
+
+     引入粒子效果
+     npm install react-particles-js 
  -->
  <!-- 
     //安装插件 搜索react （ES7 React/Redux/GraphQL/React-） 安装此插件

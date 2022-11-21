@@ -1,60 +1,29 @@
 import React ,{useState}from 'react'
 import { DownOutlined, SmileOutlined,UserOutlined} from '@ant-design/icons';
 import { Dropdown, Menu, Space ,Layout,Avatar} from 'antd';
+import {withRouter} from 'react-router-dom'
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
   } from '@ant-design/icons';
 const { Header} = Layout;
-export default function TopHeader() {
+ function TopHeader(props) {
     const [collapsed,setCollapsed] = useState(false);
     const changeCollapsed = ()=>{
        setCollapsed(!collapsed) 
     }
-    const menu1 = (
-        <Menu
-          items={[
-            {
-              key: '1',
-              label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.antgroup.com">
-                  1st menu item
-                </a>
-              ),
-            },
-            {
-              key: '2',
-              label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.aliyun.com">
-                  2nd menu item (disabled)
-                </a>
-              ),
-              icon: <SmileOutlined />,
-              disabled: true,
-            },
-            {
-              key: '3',
-              label: (
-                <a target="_blank" rel="noopener noreferrer" href="https://www.luohanacademy.com">
-                  3rd menu item (disabled)
-                </a>
-              ),
-              disabled: true,
-            },
-            {
-              key: '4',
-              danger: true,
-              label: 'a danger item',
-            },
-          ]}
-        />
-      );
+    console.log('token');
+    console.log(JSON.parse(localStorage.getItem('token')));
+    const {role:{roleName},username} = JSON.parse(localStorage.getItem('token'))
       const menu = (
         <Menu>
             <Menu.Item>
-                超级管理员
+                {roleName}
             </Menu.Item>
-            <Menu.Item danger>
+            <Menu.Item danger onClick={()=>{
+              localStorage.removeItem("token")
+              props.history.replace('/login');
+            }}>
                 退出
             </Menu.Item>
         </Menu>
@@ -68,12 +37,9 @@ export default function TopHeader() {
          {
             collapsed? <MenuUnfoldOutlined onClick={changeCollapsed}/>:<MenuFoldOutlined onClick={changeCollapsed}/>
          }
-    {/* {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-      className: 'trigger',
-      onClick: () => setCollapsed(!collapsed),
-    })} */}
+
     <div style={{float:'right'}}>
-        <span>欢迎admin回来</span>
+        <span>欢迎<span style={{color:'#1890ff'}}>{username}</span>回来</span>
         <Dropdown overlay={menu}>
             <Avatar size='large' icon = {<UserOutlined/>}/>
          </Dropdown>
@@ -81,3 +47,5 @@ export default function TopHeader() {
   </Header>
   )
 }
+
+export default withRouter(TopHeader)

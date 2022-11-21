@@ -10,8 +10,8 @@
       "roleId": 1
     },
     {
-      "username": "铁锤",
-      "password": "123",
+      "username": "tiechui",
+      "password": 123,
       "roleState": false,
       "default": false,
       "region": "亚洲",
@@ -42,7 +42,7 @@
       "roleState": true,
       "default": false,
       "region": "南极洲",
-      "roleId": 3,
+      "roleId": 2,
       "id": 5
     },
     {
@@ -74,7 +74,7 @@
     },
     {
       "username": "北京小米科技",
-      "password": "123456",
+      "password": "123",
       "region": "欧洲",
       "roleId": 2,
       "roleState": true,
@@ -82,31 +82,13 @@
       "id": 9
     },
     {
-      "username": "密码",
-      "password": "1234325423",
-      "region": "非洲",
-      "roleId": 2,
-      "roleState": true,
-      "default": false,
-      "id": 10
-    },
-    {
-      "username": "密码01",
-      "password": "1234325423",
+      "username": "超级管理员",
+      "password": "123456",
       "region": "亚洲",
       "roleId": 1,
       "roleState": true,
       "default": false,
-      "id": 11
-    },
-    {
-      "username": "小甜甜02",
-      "password": "123",
-      "region": "",
-      "roleId": 1,
-      "roleState": true,
-      "default": false,
-      "id": 12
+      "id": 10
     }
   ],
   "roles": [
