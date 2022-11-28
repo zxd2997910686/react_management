@@ -33,7 +33,11 @@
      _embed = comments 关联表
 
      引入粒子效果
-     npm install react-particles-js 
+     npm install react-particles-js
+     安装进度条 npm install --save nprogress
+
+     安装富文本编辑器
+     npm install --save react-draft-wysiwyg draft-js
  -->
  <!-- 
     //安装插件 搜索react （ES7 React/Redux/GraphQL/React-） 安装此插件
