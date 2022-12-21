@@ -37,7 +37,13 @@
      安装进度条 npm install --save nprogress
 
      安装富文本编辑器
-     npm install --save react-draft-wysiwyg draft-js
+     npm install react-draft-wysiwyg
+      npm install draft-js
+     npm install draftjs-to-html
+     npm install html-to-draftjs
+
+
+
  -->
  <!-- 
     //安装插件 搜索react （ES7 React/Redux/GraphQL/React-） 安装此插件
