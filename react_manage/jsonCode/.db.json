@@ -383,8 +383,8 @@
   "categories": [
     {
       "id": 1,
-      "title": "时事新闻",
-      "value": "时事新闻"
+      "title": "时事新闻123",
+      "value": "时事新闻123"
     },
     {
       "id": 2,
@@ -694,8 +694,8 @@
       "region": "全球",
       "author": "admin",
       "roleId": 1,
-      "auditState": 1,
-      "publishState": 0,
+      "auditState": 2,
+      "publishState": 2,
       "createTime": 1669557870375,
       "star": 0,
       "view": 0,
@@ -708,8 +708,8 @@
       "region": "全球",
       "author": "admin",
       "roleId": 1,
-      "auditState": 1,
-      "publishState": 0,
+      "auditState": 2,
+      "publishState": 1,
       "createTime": 1670740116817,
       "star": 0,
       "view": 0,
@@ -722,12 +722,54 @@
       "region": "全球",
       "author": "admin",
       "roleId": 1,
-      "auditState": 1,
+      "auditState": 3,
       "publishState": 0,
       "createTime": 1671590522611,
       "star": 0,
       "view": 0,
       "id": 25
+    },
+    {
+      "title": "测试信息",
+      "categoryId": 2,
+      "content": "<p>测试i下展示</p>\n",
+      "region": "全球",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 0,
+      "publishState": 0,
+      "createTime": 1672139633380,
+      "star": 0,
+      "view": 0,
+      "id": 26
+    },
+    {
+      "title": "哈哈哈",
+      "categoryId": 6,
+      "content": "<p>测试哈哈啊</p>\n",
+      "region": "全球",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 0,
+      "publishState": 0,
+      "createTime": 1672139658531,
+      "star": 0,
+      "view": 0,
+      "id": 27
+    },
+    {
+      "title": "24534",
+      "categoryId": 3,
+      "content": "<p>发布新闻测试哈哈哈</p>\n",
+      "region": "全球",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 1,
+      "publishState": 0,
+      "createTime": 1672141827116,
+      "star": 0,
+      "view": 0,
+      "id": 28
     }
   ]
 }

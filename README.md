@@ -43,6 +43,11 @@
      npm install html-to-draftjs
 
 
+     //日期格式化
+     npm install moment
+
+
+
 
  -->
  <!-- 
