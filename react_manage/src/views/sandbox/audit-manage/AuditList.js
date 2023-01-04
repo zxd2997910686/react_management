@@ -59,7 +59,6 @@ export default function AuditList(props) {
   //撤销
   const handleRevert = (item)=>{
     setDataSource(dataSource.filter(data=> data.id !== item.id))
-
     axios.patch(`/news/${item.id}`,{
       auditState:0
     }).then(res=>{
@@ -73,7 +72,8 @@ export default function AuditList(props) {
   //发布
   const handlePublish = (item)=>{
     axios.patch(`/news/${item.id}`,{
-      "publishState": 2
+      "publishState": 2,
+      "publishTime" : Date.now()
     }).then(res=>{
       props.history.push('/publish-manage/published')
       notification.info({
