@@ -695,7 +695,7 @@
       "author": "admin",
       "roleId": 1,
       "auditState": 2,
-      "publishState": 2,
+      "publishState": 3,
       "createTime": 1669557870375,
       "star": 0,
       "view": 0,
@@ -770,6 +770,21 @@
       "star": 0,
       "view": 0,
       "id": 28
+    },
+    {
+      "title": "再次审核新闻",
+      "categoryId": 1,
+      "content": "<p>测试审核新闻</p>\n",
+      "region": "全球",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1672985999152,
+      "star": 0,
+      "view": 0,
+      "id": 29,
+      "publishTime": 1672996410953
     }
   ]
 }

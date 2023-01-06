@@ -33,6 +33,7 @@ export default function RightList() {
         }
       });
       setdataSource(list)
+      console.log('权限列表---',list);
     })
   },[])
    const columns = [
@@ -117,7 +118,7 @@ export default function RightList() {
       rightList 权限列表
       <Table dataSource={dataSource} columns={columns} 
       pagination = {{
-        pageSize: 5
+        pageSize: 15
       }}
       />
     </div>
