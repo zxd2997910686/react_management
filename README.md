@@ -46,7 +46,8 @@
      //日期格式化
      npm install moment
 
-
+     //安装redux 
+     npm i --save redux react-redux
 
 
  -->
