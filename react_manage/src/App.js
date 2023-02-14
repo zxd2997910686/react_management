@@ -2,8 +2,10 @@ import React from "react";
 import Child from "./Child";
 import { useEffect } from "react";
 import IndexRouter from "./router/IndexRouter";
+import {Provider} from 'react-redux'
 import './App.css'
 import axiox from 'axios'
+import store from "./redux/store";
 function App() {
    //
   useEffect(()=>{
@@ -17,9 +19,9 @@ function App() {
     // })
   },[])
   return (
-      <>
+      <Provider store = {store}>
          <IndexRouter></IndexRouter>
-      </>
+      </Provider>
   );
 }
 
