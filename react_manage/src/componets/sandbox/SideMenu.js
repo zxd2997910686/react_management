@@ -8,6 +8,7 @@ import {
   } from '@ant-design/icons';
 import {withRouter} from 'react-router-dom'
 import axios from 'axios';
+import { connect } from 'react-redux';
 const { Sider} = Layout;
 const {SubMenu} = Menu;
 const menuList = [
@@ -123,7 +124,7 @@ function SideMenu(props) {
   const selectKeys = [props.location.pathname];
   const openKeys = ['/'+props.location.pathname.split('/')[1]];
   return (
-    <Sider trigger={null} collapsible >
+    <Sider trigger={null} collapsible  collapsed = {props.isCollapsed}>
       <div style={{display:"flex",height:"100%","flexDirection":"column"}}>
           <div className="logo">新闻发布系统 </div>
           <div style={{flex:1,"overflow":'auto'}}>
@@ -136,5 +137,10 @@ function SideMenu(props) {
   </Sider>
   )
 }
-export default withRouter(SideMenu) 
+
+const mapStateToProps = ({CollApsedReducer:{isCollapsed}})=>{
+    return { isCollapsed  }
+}
+
+export default connect(mapStateToProps)(withRouter(SideMenu))
 //用withRouter包裹的组件，在其内部可以拿到路由信息

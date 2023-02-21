@@ -6,6 +6,7 @@ import {Provider} from 'react-redux'
 import './App.css'
 import axiox from 'axios'
 import store from "./redux/store";
+import TestScss from "./views/sandbox/testScss/TestScss";
 function App() {
    //
   useEffect(()=>{
@@ -21,6 +22,7 @@ function App() {
   return (
       <Provider store = {store}>
          <IndexRouter></IndexRouter>
+         {/* <TestScss/> */}
       </Provider>
   );
 }

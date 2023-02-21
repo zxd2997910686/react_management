@@ -6,14 +6,17 @@ import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
   } from '@ant-design/icons';
+
+import { connect } from 'react-redux';
 const { Header} = Layout;
  function TopHeader(props) {
-    const [collapsed,setCollapsed] = useState(false);
+  console.log('topHeader  ===',props);
+    // const [collapsed,setCollapsed] = useState(false);
     const changeCollapsed = ()=>{
-       setCollapsed(!collapsed) 
+      //改变state的isCollapsed
+      props.changeCollapsed()
     }
-    console.log('token');
-    console.log(JSON.parse(localStorage.getItem('token')));
+    console.log('token=',JSON.parse(localStorage.getItem('token')));
     const {role:{roleName},username} = JSON.parse(localStorage.getItem('token'))
       const menu = (
         <Menu>
@@ -35,7 +38,7 @@ const { Header} = Layout;
       padding: '0 16px'
     }}>
          {
-            collapsed? <MenuUnfoldOutlined onClick={changeCollapsed}/>:<MenuFoldOutlined onClick={changeCollapsed}/>
+            props.isCollapsed? <MenuUnfoldOutlined onClick={changeCollapsed}/>:<MenuFoldOutlined onClick={changeCollapsed}/>
          }
 
     <div style={{float:'right'}}>
@@ -48,4 +51,26 @@ const { Header} = Layout;
   )
 }
 
-export default withRouter(TopHeader)
+/*
+connect(
+  //mapStateToProps
+  //mapDispatchToProps
+)(被包装的组件)
+*/
+
+const mapStateToProps = ({CollApsedReducer:{isCollapsed}})=>{
+  return {
+    isCollapsed
+  }
+}
+
+const mapDispatchToProps = {
+  changeCollapsed(){
+    return {
+      type:"change_collapsed"
+      //payload
+    } //action
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(TopHeader))
