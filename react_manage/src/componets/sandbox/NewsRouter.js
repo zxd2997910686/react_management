@@ -16,7 +16,8 @@ import Sunset from '../../views/sandbox/publish-manage/Sunset'
 import axios from 'axios'
 import NewsPreview from '../../views/sandbox/news-manage/NewsPreview'
 import NewsUpdate from '../../views/sandbox/news-manage/NewsUpdate'
-
+import { Spin } from 'antd'
+import { connect } from 'react-redux'
 
 const LocalRouterMap = {
     "/home":Home,
@@ -34,7 +35,8 @@ const LocalRouterMap = {
     "/publish-manage/published":Published,
     "/publish-manage/sunset":Sunset
 }
-export default function NewsRouter() {
+ function NewsRouter(props) {
+  console.log('NewsRouter',props)
     const [BackRouterList,setBackRouterList] = useState([])
     useEffect(()=>{
         Promise.all([
@@ -56,6 +58,8 @@ export default function NewsRouter() {
         return rights.includes(item.key)
     }
   return (
+    <Spin size='large' spinning = {props.isLoading}>
+
     <Switch>
       {
         BackRouterList.map(item=>{
@@ -71,5 +75,11 @@ export default function NewsRouter() {
       }
       
     </Switch>
+    </Spin>
   )
 }
+
+const mapStateToProps = ({LoadingReducer:{isLoading}})=>({
+  isLoading
+  })
+export default connect(mapStateToProps)(NewsRouter)
