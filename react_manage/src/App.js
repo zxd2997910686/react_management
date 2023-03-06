@@ -5,8 +5,10 @@ import IndexRouter from "./router/IndexRouter";
 import {Provider} from 'react-redux'
 import './App.css'
 import axiox from 'axios'
-import store from "./redux/store";
+import {store,persistor} from "./redux/store";
 import TestScss from "./views/sandbox/testScss/TestScss";
+import { PersistGate } from 'redux-persist/integration/react'
+
 function App() {
    //
   useEffect(()=>{
@@ -21,8 +23,10 @@ function App() {
   },[])
   return (
       <Provider store = {store}>
-         <IndexRouter></IndexRouter>
-         {/* <TestScss/> */}
+        <PersistGate loading = {null} persistor = {persistor}>
+          <IndexRouter></IndexRouter>
+          {/* <TestScss/> */}
+        </PersistGate>
       </Provider>
   );
 }
