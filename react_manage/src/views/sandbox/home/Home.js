@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Button ,Card,Col,Row,List,Avatar} from 'antd';
+import { Button ,Card,Col,Row,List,Avatar,Drawer} from 'antd';
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import TestScss from '../testScss/TestScss';
 import axios from 'axios';
@@ -9,6 +9,7 @@ const {Meta} = Card;
 export default function Home() {
   const [viewList,setViewList] = useState([])
   const [starLit,setStarList] = useState([])
+  const [visible, setVisible] = useState(false)
   const barRef = useRef()
   useEffect(()=>{
     axios.get("/news?publishState=2&_expand=category&_sort=view&_order=desc&_limit=6").then(res=>{
@@ -101,7 +102,11 @@ export default function Home() {
               <img alt="example" src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"/>
             }
             actions = {[
-              <SettingOutlined key= "setting"/>,
+              <SettingOutlined key= "setting" onClick={()=>{
+                setTimeout(()=>{
+                  setVisible(true)
+                },0)
+              }} />,
               <EditOutlined key= "edit"/>,
               <EllipsisOutlined key="ellipsis"/>
             ]}
@@ -119,7 +124,11 @@ export default function Home() {
             </Card>
           </Col>
         </Row>
-
+       <Drawer width= "500px" title = "个人信息分类" placement='right' closable ={true} onClose = {()=>{setVisible(false)}}
+         open = {visible} 
+       >
+        <div>测试信息</div>
+       </Drawer>
 
         <div ref={barRef} style = {{
           width:'100%',height:'400px',marginTop:'30px'
