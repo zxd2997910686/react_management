@@ -491,7 +491,7 @@
       "publishState": 2,
       "createTime": 1615778715619,
       "star": 600,
-      "view": 984,
+      "view": 985,
       "id": 3,
       "publishTime": 1615778911762
     },
@@ -536,7 +536,7 @@
       "publishState": 2,
       "createTime": 1615778808893,
       "star": 300,
-      "view": 454,
+      "view": 456,
       "id": 6,
       "publishTime": 1615778916224
     },
@@ -595,8 +595,8 @@
       "auditState": 2,
       "publishState": 2,
       "createTime": 1617508814604,
-      "star": 0,
-      "view": 0,
+      "star": 29,
+      "view": 5,
       "id": 11,
       "publishTime": 1617523734431
     },
@@ -709,11 +709,12 @@
       "author": "admin",
       "roleId": 1,
       "auditState": 2,
-      "publishState": 1,
+      "publishState": 2,
       "createTime": 1670740116817,
       "star": 0,
       "view": 0,
-      "id": 24
+      "id": 24,
+      "publishTime": 1678364953546
     },
     {
       "title": "测试表单展示富文本",
@@ -765,11 +766,12 @@
       "author": "admin",
       "roleId": 1,
       "auditState": 2,
-      "publishState": 1,
+      "publishState": 2,
       "createTime": 1672141827116,
       "star": 0,
       "view": 0,
-      "id": 28
+      "id": 28,
+      "publishTime": 1678364962841
     },
     {
       "title": "再次审核新闻",
@@ -782,9 +784,24 @@
       "publishState": 2,
       "createTime": 1672985999152,
       "star": 0,
-      "view": 0,
+      "view": 1,
       "id": 29,
       "publishTime": 1672996410953
+    },
+    {
+      "title": "新增",
+      "categoryId": 4,
+      "content": "<p>哈哈哈</p>\n",
+      "region": "全球",
+      "author": "admin",
+      "roleId": 1,
+      "auditState": 2,
+      "publishState": 2,
+      "createTime": 1678364949075,
+      "star": 0,
+      "view": 0,
+      "id": 30,
+      "publishTime": 1678364965125
     }
   ]
 }

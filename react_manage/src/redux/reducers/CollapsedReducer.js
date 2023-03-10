@@ -2,7 +2,6 @@
 export const CollApsedReducer = (prevState = {
     isCollapsed:false
 },action)=>{
-    console.log('action',action);
     let { type } = action
 
     switch(type){
