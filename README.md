@@ -48,7 +48,11 @@
 
      //安装redux 
      npm i --save redux react-redux
-
+     //安装 redux-persist 做持续性存储
+     npm i --save redux-persist
+        
+     //安装echarts
+      npm i --save echarts   
 
  -->
  <!-- 
