@@ -21,6 +21,29 @@ export default function NewsEditor(props){
             setEditorState(editorState)
         }
     })
+
+    const cacueData = ()=>{
+
+    }
+     
+    //计算两个数的大小
+    const getSize = (a,b)=>{
+        return a > b? a : b;
+    }
+
+    const onChange = (editorState)=>{
+        setEditorState(editorState)
+    }
+
+    const onBlur = ()=>{
+        props.onBlur(editorState.getCurrentContent())
+    }
+
+    const onFocus = ()=>{
+        props.onFocus(editorState.getCurrentContent())
+    }
+    useEffect(()=>{
+    },[])
     return (
         <div>
             <Editor

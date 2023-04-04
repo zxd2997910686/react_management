@@ -15,6 +15,34 @@ export default function News(){
             setList(Object.entries(_.groupBy(res.data,item=> item.category.title)))
         })
     },[])
+
+    const findMode = (List,item) =>{
+        var i = -1;
+        for(var j = 0;j<List.length;j++){
+            var temp = List[j];
+            if(temp === item){
+                i=j;
+                return i;
+            }
+        }
+        return i;
+    }
+    // 计算链表的长度
+    const getListLength = (list) => {
+        return list.length
+    }
+
+    // 计算链表的长度
+    const getListLength2 = (list) => {
+        return list.length
+    }
+
+    // 删除链表的第一个元素
+    const deleteFirst = (list) => {
+        return list.splice(0,1)
+    }
+    
+    
     return (<div style={{width:'95%',margin: '0 auto'}}>
         <PageHeader
             className="site-page-header"
