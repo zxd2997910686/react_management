@@ -16,6 +16,7 @@ export default function NewsSandBox() {
   useEffect(()=>{
     NProgress.done()
   })
+  
   return (
     <Layout>
       <SideMenu></SideMenu>
